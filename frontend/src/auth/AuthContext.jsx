@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useCallback, useEffect } from 'react'
-
+const API = import.meta.env.VITE_API_URL ?? ''
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
     const login = useCallback(async (email, password) => {
         setLoading(true); setError(null)
         try {
-            const res = await fetch('/api/auth/login', {
+            const res = await fetch(`${API}/api/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
@@ -46,7 +46,7 @@ export function AuthProvider({ children }) {
     const switchRole = useCallback(async (role) => {
         setLoading(true); setError(null)
         try {
-            const res = await fetch('/api/auth/role-switch', {
+            const res = await fetch(`${API}/api/auth/role-switch`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ role }),
@@ -64,7 +64,7 @@ export function AuthProvider({ children }) {
 
     // Drop-in fetch() replacement that adds the Bearer token automatically
     const authFetch = useCallback(async (path, options = {}) => {
-        const res = await fetch(path, {
+        const res = await fetch(`${API}${path}`, {
             ...options,
             headers: {
                 'Content-Type': 'application/json',
