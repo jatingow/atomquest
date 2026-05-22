@@ -2,6 +2,8 @@
 
 A full-stack goal management application with role-based access control for teams. Built with modern web technologies, AtomQuest enables employees, managers, and admins to collaborate on setting, tracking, and achieving organizational goals.
 
+**Built for Atomberg Technologies Hackathon** 🚀
+
 ## ✨ Features
 
 - **Role-Based Access Control** - Different interfaces and permissions for Admins, Managers, and Employees
